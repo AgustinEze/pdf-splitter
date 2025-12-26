@@ -67,18 +67,30 @@ const elements = {
  */
 async function init() {
   try {
-    // Configuration - Replace these with your actual IDs before deployment
-    const config = {
-      adsenseClientId: 'ca-pub-XXXXXXXXXXXXXXXX', // Replace with your AdSense client ID
-      gaMeasurementId: 'G-XXXXXXXXXX'             // Replace with your GA4 measurement ID
+    // Get configuration from config.js (or use defaults)
+    const config = window.APP_CONFIG || {
+      adsense: {
+        clientId: 'ca-pub-XXXXXXXXXXXXXXXX',
+        slots: {
+          banner: '1234567890',
+          sidebarLeft: '0987654321',
+          sidebarRight: '1357924680'
+        }
+      },
+      analytics: { measurementId: 'G-XXXXXXXXXX' },
+      site: {
+        defaultLanguage: 'es',
+        defaultTheme: 'dark',
+        domain: 'your-domain.vercel.app'
+      }
     };
 
     // 1. Initialize i18n (must be first for translations)
-    await i18n.init();
+    await i18n.init(config.site.defaultLanguage);
     console.log('✓ i18n initialized');
 
     // 2. Initialize theme system
-    Theme.init();
+    Theme.init(config.site.defaultTheme);
     console.log('✓ Theme initialized');
 
     // 3. Check cookie consent and show banner if needed
@@ -88,11 +100,11 @@ async function init() {
     } else {
       // Load scripts based on saved consent
       if (consent.preferences.analytics) {
-        Analytics.init(config.gaMeasurementId);
+        Analytics.init(config.analytics.measurementId);
         console.log('✓ Analytics initialized');
       }
       if (consent.preferences.advertising) {
-        Ads.init(config.adsenseClientId);
+        Ads.init(config.adsense);
         console.log('✓ AdSense initialized');
       }
     }

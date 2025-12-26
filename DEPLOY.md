@@ -32,12 +32,40 @@ Esto abrirá automáticamente http://localhost:8000 en tu navegador.
 - ✅ El banner de cookies aparece
 - ✅ Las traducciones funcionan correctamente
 
-## 🔧 Paso 2: Configurar IDs (Opcional por ahora)
+## 🔧 Paso 2: Configurar IDs
 
-Por ahora puedes dejar los placeholders. Más adelante, cuando tengas tus cuentas de AdSense y Analytics, actualizarás:
+**Importante**: Crea tu archivo de configuración antes del primer deploy.
 
-**Para AdSense**: `index.html` (líneas 71, 83, 241)
-**Para Analytics**: `js/app.js` (línea 73)
+```bash
+# Desde el directorio deploy/js
+cd js
+cp config.example.js config.js
+```
+
+Ahora edita `js/config.js` y reemplaza los placeholders con tus IDs reales:
+
+```javascript
+const CONFIG = {
+  adsense: {
+    clientId: 'ca-pub-1234567890123456',  // Tu Publisher ID real
+    slots: {
+      banner: '1234567890',        // Tu slot ID del banner
+      sidebarLeft: '0987654321',   // Tu slot ID sidebar izquierdo
+      sidebarRight: '1357924680'   // Tu slot ID sidebar derecho
+    }
+  },
+  analytics: {
+    measurementId: 'G-ABC123XYZ'  // Tu Measurement ID real
+  },
+  site: {
+    domain: 'mi-sitio.vercel.app',  // Tu dominio de Vercel
+    defaultLanguage: 'es',          // Idioma por defecto
+    defaultTheme: 'dark'            // Tema por defecto
+  }
+};
+```
+
+**Nota**: Si aún no tienes AdSense/Analytics, puedes dejar los placeholders. Los configurarás más adelante en el Paso 9.
 
 ## 📦 Paso 3: Inicializar Git (si aún no lo has hecho)
 
@@ -146,17 +174,38 @@ git push
 3. Espera aprobación (1-2 semanas)
 4. Una vez aprobado:
    - Copia tu Publisher ID (ca-pub-XXXXXXXXXXXXXXXX)
-   - Actualiza `index.html` (líneas 71, 83, 241)
-   - Crea ad units y copia los slot IDs
-   - Haz commit y push
+   - Crea 3 ad units (Auto ads):
+     * Banner superior (Horizontal)
+     * Sidebar izquierdo (Vertical)
+     * Sidebar derecho (Vertical)
+   - Copia los 3 slot IDs
+   - Actualiza `js/config.js`:
+     ```javascript
+     adsense: {
+       clientId: 'ca-pub-1234567890123456',  // Tu Publisher ID
+       slots: {
+         banner: '1234567890',        // Slot del banner
+         sidebarLeft: '0987654321',   // Slot sidebar izq
+         sidebarRight: '1357924680'   // Slot sidebar der
+       }
+     }
+     ```
+   - **NO hagas commit de config.js** (está gitignored)
+   - Actualiza config.js localmente y re-deploya
 
 ### Google Analytics 4
 
 1. Ve a https://analytics.google.com
 2. Crea una propiedad
 3. Copia el Measurement ID (G-XXXXXXXXXX)
-4. Actualiza `js/app.js` línea 73
-5. Haz commit y push
+4. Actualiza `js/config.js`:
+   ```javascript
+   analytics: {
+     measurementId: 'G-ABC123XYZ'  // Tu Measurement ID real
+   }
+   ```
+5. **NO hagas commit de config.js** (está gitignored)
+6. Actualiza config.js localmente y re-deploya con `vercel --prod`
 
 ## 📊 Monitoreo
 
