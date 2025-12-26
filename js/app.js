@@ -3,6 +3,8 @@
  * Handles UI interactions and orchestrates PDF operations
  */
 
+console.log('app.js loaded');
+
 // Application State
 const AppState = {
   currentPDF: null,
@@ -66,7 +68,9 @@ const elements = {
  * Initializes all modules in the correct order
  */
 async function init() {
+  console.log('init() function called');
   try {
+    console.log('window.APP_CONFIG:', window.APP_CONFIG);
     // Get configuration from config.js (or use defaults)
     const config = window.APP_CONFIG || {
       adsense: {
@@ -127,8 +131,15 @@ async function init() {
  * Setup all event listeners
  */
 function setupEventListeners() {
+  console.log('Setting up event listeners...');
+  console.log('elements.fileInput:', elements.fileInput);
+  console.log('elements.selectFileBtn:', elements.selectFileBtn);
+
   // File upload events
-  elements.selectFileBtn.addEventListener('click', () => elements.fileInput.click());
+  elements.selectFileBtn.addEventListener('click', () => {
+    console.log('Select file button clicked');
+    elements.fileInput.click();
+  });
   elements.fileInput.addEventListener('change', handleFileSelect);
 
   // Drag and drop events
@@ -160,7 +171,9 @@ function setupEventListeners() {
  * Handle file selection from input
  */
 async function handleFileSelect(e) {
+  console.log('handleFileSelect called', e);
   const file = e.target.files[0];
+  console.log('Selected file:', file);
   if (file) {
     await loadPDFFile(file);
   }
@@ -199,20 +212,31 @@ async function handleDrop(e) {
  * Load and validate a PDF file
  */
 async function loadPDFFile(file) {
+  console.log('loadPDFFile called with file:', file);
+
   // Validate file
+  console.log('Validating file...');
   const validation = Validators.validateFile(file);
+  console.log('Validation result:', validation);
+
   if (!validation.valid) {
+    console.error('Validation failed:', validation.error);
     showError(validation.error);
     return;
   }
 
   try {
     // Show loading state
+    console.log('Showing progress...');
     showProgress('Cargando PDF...');
 
     // Load PDF
+    console.log('Loading PDF with PDFHandler...');
     const pdfDoc = await PDFHandler.loadPDF(file);
+    console.log('PDF loaded:', pdfDoc);
+
     const pdfInfo = PDFHandler.getPDFInfo(pdfDoc);
+    console.log('PDF info:', pdfInfo);
 
     // Update state
     AppState.currentPDF = file;
@@ -567,8 +591,12 @@ function hideResults() {
 }
 
 // Initialize app when DOM is ready
+console.log('Setting up initialization...');
+console.log('document.readyState:', document.readyState);
 if (document.readyState === 'loading') {
+  console.log('Adding DOMContentLoaded listener');
   document.addEventListener('DOMContentLoaded', init);
 } else {
+  console.log('DOM already loaded, calling init()');
   init();
 }

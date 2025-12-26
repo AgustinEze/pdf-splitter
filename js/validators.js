@@ -25,10 +25,10 @@ const Validators = {
       return { valid: false, error: 'El archivo no es un PDF válido' };
     }
 
-    // Check file size (max 50MB)
-    const maxSize = 50 * 1024 * 1024; // 50MB in bytes
+    // Check file size (max 500MB)
+    const maxSize = 500 * 1024 * 1024; // 500MB in bytes
     if (file.size > maxSize) {
-      return { valid: false, error: 'El archivo es demasiado grande (máximo 50MB)' };
+      return { valid: false, error: 'El archivo es demasiado grande (máximo 500MB)' };
     }
 
     if (file.size === 0) {
