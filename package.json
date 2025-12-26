@@ -6,8 +6,8 @@
   "scripts": {
     "dev": "npx http-server -p 8000 -o",
     "preview": "npx http-server -p 8000",
-    "build": "echo 'No build step needed - static site'",
-    "vercel-build": "echo 'Static site ready for deployment'"
+    "build": "node build-config.js",
+    "vercel-build": "node build-config.js"
   },
   "keywords": [
     "pdf",
