@@ -6,9 +6,10 @@
 const Theme = {
   /**
    * Initialize theme system
+   * @param {string} defaultTheme - Optional default theme from config ('dark' or 'light')
    */
-  init() {
-    const savedTheme = localStorage.getItem('theme') || 'dark';
+  init(defaultTheme = 'dark') {
+    const savedTheme = localStorage.getItem('theme') || defaultTheme;
     this.setTheme(savedTheme);
     this.setupToggle();
   },

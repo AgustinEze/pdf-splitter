@@ -37,27 +37,46 @@ This site is configured for deployment on Vercel.
 
 ## ⚙️ Configuration Before Deploy
 
-### 1. Update AdSense IDs
+### 1. Create Configuration File
 
-In `index.html`, replace all instances of:
-```html
-data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+**Important**: Copy the example config and add your real IDs:
+
+```bash
+cd js
+cp config.example.js config.js
 ```
-With your actual AdSense client ID.
 
-Also update the slot IDs:
-- Banner: `data-ad-slot="1234567890"`
-- Left Sidebar: `data-ad-slot="0987654321"`
-- Right Sidebar: `data-ad-slot="1357924680"`
+Then edit `js/config.js` and replace:
 
-### 2. Update Analytics ID
-
-In `js/app.js` (line 73), replace:
 ```javascript
-gaMeasurementId: 'G-XXXXXXXXXX'
+const CONFIG = {
+  // Google AdSense Configuration
+  adsense: {
+    clientId: 'ca-pub-XXXXXXXXXXXXXXXX',  // ← Your AdSense Publisher ID
+    slots: {
+      banner: '1234567890',       // ← Top banner ad slot ID
+      sidebarLeft: '0987654321',  // ← Left sidebar ad slot ID
+      sidebarRight: '1357924680'  // ← Right sidebar ad slot ID
+    }
+  },
+
+  // Google Analytics 4 Configuration
+  analytics: {
+    measurementId: 'G-XXXXXXXXXX'  // ← Your GA4 Measurement ID
+  },
+
+  // Site Configuration
+  site: {
+    domain: 'your-domain.vercel.app',  // ← Your Vercel domain (without https://)
+    defaultLanguage: 'es',              // Default language: 'es', 'en', or 'pt'
+    defaultTheme: 'dark'                // Default theme: 'dark' or 'light'
+  }
+};
 ```
 
-### 3. Update Domain in Meta Tags
+**Note**: `config.js` is gitignored and won't be committed. This keeps your IDs secure.
+
+### 2. Update Domain in Meta Tags
 
 In `index.html`, replace all instances of:
 ```html
@@ -99,16 +118,23 @@ vercel
 vercel --prod
 ```
 
-## 🔐 Environment Variables
+## 🔐 Configuration Management
 
-Create a `.env` file based on `.env.example`:
+This project uses a **client-side configuration file** (`js/config.js`) instead of traditional environment variables, since static sites run entirely in the browser.
 
-```bash
-ADSENSE_CLIENT_ID=ca-pub-XXXXXXXXXXXXXXXX
-GA_MEASUREMENT_ID=G-XXXXXXXXXX
-```
+### Why config.js instead of .env?
 
-**Note**: For static sites, these are placeholders. You'll need to hardcode them in `index.html` and `js/app.js` as shown above.
+- `.env` files work for server-side apps (Node.js, etc.)
+- Static sites run 100% in the browser - they can't read `.env` files
+- `config.js` provides a centralized, browser-accessible configuration
+- It's gitignored to keep your IDs secure
+
+### Setup
+
+1. Copy the example: `cp js/config.example.js js/config.js`
+2. Edit `js/config.js` with your real IDs
+3. Never commit `config.js` to Git (it's already in `.gitignore`)
+4. For Vercel deployment, update `config.js` locally before deploying
 
 ## 📁 Project Structure
 
@@ -117,13 +143,14 @@ deploy/
 ├── index.html              # Main HTML with SEO, ads, i18n
 ├── package.json            # NPM configuration
 ├── vercel.json            # Vercel deployment config
-├── .gitignore             # Git ignore rules
-├── .env.example           # Environment variables template
+├── .gitignore             # Git ignore rules (includes js/config.js)
 ├── css/
 │   ├── styles.css         # Main styles with theme system
 │   ├── ads.css            # Ad layout (responsive)
 │   └── cookie-banner.css  # Cookie consent banner
 ├── js/
+│   ├── config.example.js  # Configuration template
+│   ├── config.js          # Configuration (gitignored, you create this)
 │   ├── app.js             # Main application logic
 │   ├── pdf-handler.js     # PDF manipulation
 │   ├── validators.js      # Input validation

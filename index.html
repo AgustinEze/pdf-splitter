@@ -65,25 +65,15 @@
 </head>
 <body>
     <!-- Top Banner Ad -->
-    <div class="ad-banner-top">
-        <ins class="adsbygoogle"
-             style="display:block"
-             data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
-             data-ad-slot="1234567890"
-             data-ad-format="auto"
-             data-full-width-responsive="true"></ins>
+    <div class="ad-banner-top" id="adBannerTop">
+        <!-- Ad will be injected here by ads.js -->
     </div>
 
     <!-- Main Layout with Ads -->
     <div class="layout-with-ads">
         <!-- Left Sidebar Ad (Desktop only) -->
-        <aside class="ad-sidebar ad-sidebar-left">
-            <ins class="adsbygoogle"
-                 style="display:block"
-                 data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
-                 data-ad-slot="0987654321"
-                 data-ad-format="auto"
-                 data-full-width-responsive="true"></ins>
+        <aside class="ad-sidebar ad-sidebar-left" id="adSidebarLeft">
+            <!-- Ad will be injected here by ads.js -->
         </aside>
 
         <!-- Main Content -->
@@ -235,19 +225,17 @@
         </main>
 
         <!-- Right Sidebar Ad (Desktop only) -->
-        <aside class="ad-sidebar ad-sidebar-right">
-            <ins class="adsbygoogle"
-                 style="display:block"
-                 data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
-                 data-ad-slot="1357924680"
-                 data-ad-format="auto"
-                 data-full-width-responsive="true"></ins>
+        <aside class="ad-sidebar ad-sidebar-right" id="adSidebarRight">
+            <!-- Ad will be injected here by ads.js -->
         </aside>
     </div>
 
     <!-- Scripts -->
     <!-- External Libraries -->
     <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+
+    <!-- Configuration (MUST load before other modules) -->
+    <script src="js/config.js"></script>
 
     <!-- Core Modules (load in order) -->
     <script src="js/i18n.js"></script>

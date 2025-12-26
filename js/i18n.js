@@ -11,8 +11,9 @@ const i18n = {
   /**
    * Initialize i18n system
    * Detects browser language and loads appropriate translations
+   * @param {string} defaultLanguage - Optional default language from config
    */
-  async init() {
+  async init(defaultLanguage = 'es') {
     try {
       // Get browser language (first 2 chars, e.g., 'en' from 'en-US')
       const browserLang = navigator.language.substring(0, 2).toLowerCase();
@@ -23,8 +24,8 @@ const i18n = {
       // Determine which language to use
       let lang = savedLang;
       if (!lang) {
-        // Use browser language if supported, otherwise default to Spanish
-        lang = this.supportedLanguages.includes(browserLang) ? browserLang : 'es';
+        // Use browser language if supported, otherwise use config default
+        lang = this.supportedLanguages.includes(browserLang) ? browserLang : defaultLanguage;
       }
 
       await this.loadLanguage(lang);
