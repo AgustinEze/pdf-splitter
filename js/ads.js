@@ -15,22 +15,17 @@ const Ads = {
   /**
    * Initialize Google AdSense
    * Only call this after user consent
+   * @param {Object} adsenseConfig - Configuration object with clientId and slots
    */
-  init(clientId, adSlots) {
+  init(adsenseConfig) {
     if (this.initialized) {
       console.log('AdSense already initialized');
       return;
     }
 
-    // Use provided client ID or fallback to default
-    if (clientId) {
-      this.clientId = clientId;
-    }
-
-    // Use provided ad slots if available
-    if (adSlots) {
-      this.adSlots = { ...this.adSlots, ...adSlots };
-    }
+    // Extract config
+    this.clientId = adsenseConfig.clientId || this.clientId;
+    this.adSlots = { ...this.adSlots, ...(adsenseConfig.slots || {}) };
 
     // Validate client ID format
     if (!this.clientId || !this.clientId.startsWith('ca-pub-')) {
@@ -39,6 +34,9 @@ const Ads = {
     }
 
     try {
+      // Inject ad HTML into containers
+      this.injectAds();
+
       // Load AdSense script
       const script = document.createElement('script');
       script.async = true;
@@ -60,6 +58,50 @@ const Ads = {
     } catch (error) {
       console.error('Error initializing AdSense:', error);
     }
+  },
+
+  /**
+   * Inject ad HTML into containers
+   */
+  injectAds() {
+    // Ad configurations for each container
+    const adConfigs = [
+      {
+        containerId: 'adBannerTop',
+        slotId: this.adSlots.banner,
+        style: 'display:block',
+        format: 'auto'
+      },
+      {
+        containerId: 'adSidebarLeft',
+        slotId: this.adSlots.sidebarLeft,
+        style: 'display:block',
+        format: 'auto'
+      },
+      {
+        containerId: 'adSidebarRight',
+        slotId: this.adSlots.sidebarRight,
+        style: 'display:block',
+        format: 'auto'
+      }
+    ];
+
+    // Inject ad HTML into each container
+    adConfigs.forEach(config => {
+      const container = document.getElementById(config.containerId);
+      if (container) {
+        container.innerHTML = `
+          <ins class="adsbygoogle"
+               style="${config.style}"
+               data-ad-client="${this.clientId}"
+               data-ad-slot="${config.slotId}"
+               data-ad-format="${config.format}"
+               data-full-width-responsive="true"></ins>
+        `;
+      }
+    });
+
+    console.log('Ad containers injected with client ID:', this.clientId);
   },
 
   /**
