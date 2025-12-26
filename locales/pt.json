@@ -1,0 +1,101 @@
+{
+  "header": {
+    "title": "Dividir PDF",
+    "subtitle": "Ferramenta web para dividir arquivos PDF de diferentes formas"
+  },
+  "upload": {
+    "dragDrop": "Arraste seu PDF aqui ou clique para selecionar",
+    "selectFile": "Selecionar arquivo"
+  },
+  "pdfInfo": {
+    "title": "Informações do PDF",
+    "fileName": "Arquivo:",
+    "pageCount": "Páginas:",
+    "fileSize": "Tamanho:"
+  },
+  "modes": {
+    "title": "Selecione o modo de divisão",
+    "everyN": {
+      "title": "Dividir a cada N páginas",
+      "description": "Divide o PDF em arquivos de N páginas cada"
+    },
+    "specific": {
+      "title": "Extrair páginas específicas",
+      "description": "Extrai páginas individuais ou intervalos específicos"
+    },
+    "ranges": {
+      "title": "Dividir por intervalos",
+      "description": "Cria vários arquivos com intervalos personalizados"
+    }
+  },
+  "config": {
+    "title": "Configuração",
+    "pagesPerFile": "Páginas por arquivo:",
+    "pagesPerFileHelp": "Cada arquivo terá este número de páginas (exceto o último se houver páginas restantes)",
+    "pagesPerFilePlaceholder": "Ex: 5",
+    "specificPages": "Páginas para extrair:",
+    "specificPagesHelp": "Formato: números separados por vírgula. Use hífen para intervalos (ex: 5-10)",
+    "specificPagesPlaceholder": "Ex: 1, 3, 5-10, 15",
+    "rangesList": "Intervalos para dividir:",
+    "rangesListHelp": "Formato: intervalos separados por ponto e vírgula (ex: 1-5; 10-15)",
+    "rangesListPlaceholder": "Ex: 1-5; 10-15; 20-25"
+  },
+  "buttons": {
+    "split": "Dividir PDF",
+    "clear": "Limpar"
+  },
+  "preview": {
+    "title": "Pré-visualização"
+  },
+  "progress": {
+    "processing": "Processando..."
+  },
+  "results": {
+    "title": "Resultados"
+  },
+  "footer": {
+    "privacy": "Ferramenta 100% web. Seus PDFs não são enviados para nenhum servidor."
+  },
+  "errors": {
+    "noFile": "Nenhum arquivo selecionado",
+    "invalidFile": "O arquivo não é um PDF válido",
+    "fileTooBig": "Arquivo muito grande. Máximo 50 MB",
+    "invalidPageNumber": "Número de página inválido: deve ser maior que 0",
+    "pageOutOfRange": "A página {page} está fora do intervalo (1-{max})",
+    "invalidRange": "Intervalo inválido: {range}",
+    "invalidFormat": "Formato inválido. Use números separados por vírgula e hífen para intervalos",
+    "duplicatePages": "Páginas duplicadas encontradas e removidas",
+    "emptyInput": "Por favor, insira pelo menos um número de página",
+    "invalidRangeFormat": "Formato de intervalo inválido. Use: 1-5; 6-10",
+    "pagesPerFileRequired": "Por favor, insira o número de páginas por arquivo",
+    "pagesPerFileInvalid": "O número de páginas deve ser maior que 0",
+    "pagesPerFileTooLarge": "O número de páginas por arquivo não pode ser maior que o total de páginas ({total})",
+    "processingError": "Erro ao processar o PDF. Por favor, tente novamente.",
+    "rangeOverlap": "Os intervalos não podem se sobrepor",
+    "rangeEmpty": "Todos os intervalos devem conter pelo menos uma página"
+  },
+  "messages": {
+    "fileLoaded": "PDF carregado com sucesso: {name}",
+    "splitSuccess": "PDF dividido com sucesso. {count} arquivos criados.",
+    "fileDownloaded": "Arquivo baixado: {name}",
+    "allFilesDownloaded": "Todos os arquivos foram baixados"
+  },
+  "cookieBanner": {
+    "title": "Configurações de Cookies",
+    "message": "Usamos cookies para melhorar sua experiência e analisar o uso do site. Você pode aceitar todos os cookies ou personalizar suas preferências.",
+    "acceptAll": "Aceitar tudo",
+    "rejectAll": "Apenas necessários",
+    "customize": "Personalizar",
+    "necessary": "Cookies necessários",
+    "necessaryDesc": "Essenciais para o funcionamento do site (tema, idioma)",
+    "analytics": "Cookies de análise",
+    "analyticsDesc": "Ajudam-nos a entender como você usa o site",
+    "advertising": "Cookies de publicidade",
+    "advertisingDesc": "Permitem-nos mostrar anúncios relevantes",
+    "savePreferences": "Salvar preferências"
+  },
+  "ui": {
+    "languageSelector": "Idioma",
+    "themeToggle": "Alternar tema"
+  }
+}

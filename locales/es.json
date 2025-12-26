@@ -1,0 +1,101 @@
+{
+  "header": {
+    "title": "Dividir PDF",
+    "subtitle": "Herramienta web para dividir archivos PDF de diferentes formas"
+  },
+  "upload": {
+    "dragDrop": "Arrastra tu PDF aquí o haz clic para seleccionar",
+    "selectFile": "Seleccionar archivo"
+  },
+  "pdfInfo": {
+    "title": "Información del PDF",
+    "fileName": "Archivo:",
+    "pageCount": "Páginas:",
+    "fileSize": "Tamaño:"
+  },
+  "modes": {
+    "title": "Selecciona el modo de división",
+    "everyN": {
+      "title": "Dividir cada N páginas",
+      "description": "Divide el PDF en archivos de N páginas cada uno"
+    },
+    "specific": {
+      "title": "Extraer páginas específicas",
+      "description": "Extrae páginas individuales o rangos específicos"
+    },
+    "ranges": {
+      "title": "Dividir por rangos",
+      "description": "Crea múltiples archivos con rangos personalizados"
+    }
+  },
+  "config": {
+    "title": "Configuración",
+    "pagesPerFile": "Páginas por archivo:",
+    "pagesPerFileHelp": "Cada archivo tendrá este número de páginas (excepto el último si sobran páginas)",
+    "pagesPerFilePlaceholder": "Ej: 5",
+    "specificPages": "Páginas a extraer:",
+    "specificPagesHelp": "Formato: números separados por comas. Usa guión para rangos (ej: 5-10)",
+    "specificPagesPlaceholder": "Ej: 1, 3, 5-10, 15",
+    "rangesList": "Rangos a dividir:",
+    "rangesListHelp": "Formato: rangos separados por punto y coma (ej: 1-5; 10-15)",
+    "rangesListPlaceholder": "Ej: 1-5; 10-15; 20-25"
+  },
+  "buttons": {
+    "split": "Dividir PDF",
+    "clear": "Limpiar"
+  },
+  "preview": {
+    "title": "Vista previa"
+  },
+  "progress": {
+    "processing": "Procesando..."
+  },
+  "results": {
+    "title": "Resultados"
+  },
+  "footer": {
+    "privacy": "Herramienta 100% web. Tus PDFs no se envían a ningún servidor."
+  },
+  "errors": {
+    "noFile": "No se ha seleccionado ningún archivo",
+    "invalidFile": "El archivo no es un PDF válido",
+    "fileTooBig": "El archivo es demasiado grande. Máximo 50 MB",
+    "invalidPageNumber": "Número de página inválido: debe ser mayor que 0",
+    "pageOutOfRange": "La página {page} está fuera del rango (1-{max})",
+    "invalidRange": "Rango inválido: {range}",
+    "invalidFormat": "Formato inválido. Use números separados por comas y rangos con guión",
+    "duplicatePages": "Se encontraron páginas duplicadas que fueron eliminadas",
+    "emptyInput": "Por favor, ingrese al menos un número de página",
+    "invalidRangeFormat": "Formato de rango inválido. Use: 1-5; 6-10",
+    "pagesPerFileRequired": "Por favor, ingrese el número de páginas por archivo",
+    "pagesPerFileInvalid": "El número de páginas debe ser mayor que 0",
+    "pagesPerFileTooLarge": "El número de páginas por archivo no puede ser mayor que el total de páginas ({total})",
+    "processingError": "Error al procesar el PDF. Por favor, intente nuevamente.",
+    "rangeOverlap": "Los rangos no pueden solaparse",
+    "rangeEmpty": "Todos los rangos deben contener al menos una página"
+  },
+  "messages": {
+    "fileLoaded": "PDF cargado correctamente: {name}",
+    "splitSuccess": "PDF dividido exitosamente. {count} archivos creados.",
+    "fileDownloaded": "Archivo descargado: {name}",
+    "allFilesDownloaded": "Todos los archivos han sido descargados"
+  },
+  "cookieBanner": {
+    "title": "Configuración de Cookies",
+    "message": "Usamos cookies para mejorar tu experiencia y analizar el uso del sitio. Puedes aceptar todas las cookies o personalizar tus preferencias.",
+    "acceptAll": "Aceptar todo",
+    "rejectAll": "Solo necesarias",
+    "customize": "Personalizar",
+    "necessary": "Cookies necesarias",
+    "necessaryDesc": "Esenciales para el funcionamiento del sitio (tema, idioma)",
+    "analytics": "Cookies de análisis",
+    "analyticsDesc": "Nos ayudan a entender cómo usas el sitio",
+    "advertising": "Cookies de publicidad",
+    "advertisingDesc": "Permiten mostrar anuncios relevantes",
+    "savePreferences": "Guardar preferencias"
+  },
+  "ui": {
+    "languageSelector": "Idioma",
+    "themeToggle": "Cambiar tema"
+  }
+}

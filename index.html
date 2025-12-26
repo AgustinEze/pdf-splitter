@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+    <!-- Essential Meta Tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Free online PDF splitter tool. Split PDFs by pages, ranges, or extract specific pages. 100% secure, no uploads, works offline.">
+    <meta name="keywords" content="PDF splitter, split PDF, divide PDF, extract PDF pages, free PDF tool, herramienta PDF, dividir PDF gratis, separar PDF, ferramenta PDF">
+    <meta name="author" content="PDF Splitter">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://your-domain.vercel.app/">
+    <meta property="og:title" content="Free PDF Splitter - Divide PDFs Online">
+    <meta property="og:description" content="Split PDF files securely in your browser. No uploads, completely free. 100% web processing.">
+    <meta property="og:image" content="https://your-domain.vercel.app/assets/og-image.jpg">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://your-domain.vercel.app/">
+    <meta name="twitter:title" content="Free PDF Splitter - Divide PDFs Online">
+    <meta name="twitter:description" content="Split PDF files securely in your browser">
+    <meta name="twitter:image" content="https://your-domain.vercel.app/assets/twitter-image.jpg">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://your-domain.vercel.app/">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+
+    <title>Free PDF Splitter - Split PDFs Online</title>
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/ads.css">
+    <link rel="stylesheet" href="css/cookie-banner.css">
+
+    <!-- Structured Data (Schema.org) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "PDF Splitter",
+      "description": "Free online tool to split PDF files in your browser",
+      "url": "https://your-domain.vercel.app",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "Any",
+      "browserRequirements": "Requires JavaScript. Modern browser required.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "featureList": [
+        "Split PDF every N pages",
+        "Extract specific pages",
+        "Split by custom ranges",
+        "100% web processing",
+        "No file uploads",
+        "Free forever"
+      ]
+    }
+    </script>
+</head>
+<body>
+    <!-- Top Banner Ad -->
+    <div class="ad-banner-top">
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+             data-ad-slot="1234567890"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+    </div>
+
+    <!-- Main Layout with Ads -->
+    <div class="layout-with-ads">
+        <!-- Left Sidebar Ad (Desktop only) -->
+        <aside class="ad-sidebar ad-sidebar-left">
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+                 data-ad-slot="0987654321"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="container">
+                <!-- Header with Controls -->
+                <header class="header">
+                    <div class="header-controls">
+                        <!-- Language Selector -->
+                        <select id="languageSelector" class="language-selector" aria-label="Select language">
+                            <option value="es">ES</option>
+                            <option value="en">EN</option>
+                            <option value="pt">PT</option>
+                        </select>
+
+                        <!-- Theme Toggle -->
+                        <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
+                            <span id="themeIcon"></span>
+                        </button>
+                    </div>
+
+                    <h1 data-i18n="header.title">Dividir PDF</h1>
+                    <p class="subtitle" data-i18n="header.subtitle">Herramienta web para dividir archivos PDF de diferentes formas</p>
+                </header>
+
+                <!-- Upload Section -->
+                <section class="upload-section">
+                    <div class="upload-area" id="uploadArea">
+                        <div class="upload-icon">📄</div>
+                        <p class="upload-text" data-i18n="upload.dragDrop">Arrastra tu PDF aquí o haz clic para seleccionar</p>
+                        <input type="file" id="fileInput" accept=".pdf,application/pdf" hidden>
+                        <button class="btn-secondary" id="selectFileBtn" data-i18n="upload.selectFile">Seleccionar archivo</button>
+                    </div>
+                </section>
+
+                <!-- PDF Info Panel (hidden by default) -->
+                <section class="pdf-info hidden" id="pdfInfo">
+                    <h2 data-i18n="pdfInfo.title">Información del PDF</h2>
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <span class="info-label" data-i18n="pdfInfo.fileName">Archivo:</span>
+                            <span class="info-value" id="fileName">-</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label" data-i18n="pdfInfo.pageCount">Páginas:</span>
+                            <span class="info-value" id="pageCount">-</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label" data-i18n="pdfInfo.fileSize">Tamaño:</span>
+                            <span class="info-value" id="fileSize">-</span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Mode Selection -->
+                <section class="mode-section hidden" id="modeSection">
+                    <h2 data-i18n="modes.title">Selecciona el modo de división</h2>
+                    <div class="mode-options">
+                        <label class="mode-option">
+                            <input type="radio" name="mode" value="everyN" id="modeEveryN" checked>
+                            <div class="mode-card">
+                                <h3 data-i18n="modes.everyN.title">Dividir cada N páginas</h3>
+                                <p data-i18n="modes.everyN.description">Divide el PDF en archivos de N páginas cada uno</p>
+                            </div>
+                        </label>
+
+                        <label class="mode-option">
+                            <input type="radio" name="mode" value="specific" id="modeSpecific">
+                            <div class="mode-card">
+                                <h3 data-i18n="modes.specific.title">Extraer páginas específicas</h3>
+                                <p data-i18n="modes.specific.description">Extrae páginas individuales o rangos específicos</p>
+                            </div>
+                        </label>
+
+                        <label class="mode-option">
+                            <input type="radio" name="mode" value="ranges" id="modeRanges">
+                            <div class="mode-card">
+                                <h3 data-i18n="modes.ranges.title">Dividir por rangos</h3>
+                                <p data-i18n="modes.ranges.description">Crea múltiples archivos con rangos personalizados</p>
+                            </div>
+                        </label>
+                    </div>
+                </section>
+
+                <!-- Configuration Panel -->
+                <section class="config-section hidden" id="configSection">
+                    <h2 data-i18n="config.title">Configuración</h2>
+
+                    <!-- Config for Mode 1: Every N Pages -->
+                    <div class="config-panel" id="configEveryN">
+                        <label for="pagesPerFile" data-i18n="config.pagesPerFile">Páginas por archivo:</label>
+                        <input type="number" id="pagesPerFile" min="1" placeholder="Ej: 5" data-i18n-placeholder="config.pagesPerFilePlaceholder">
+                        <p class="help-text" data-i18n="config.pagesPerFileHelp">Cada archivo tendrá este número de páginas (excepto el último si sobran páginas)</p>
+                    </div>
+
+                    <!-- Config for Mode 2: Specific Pages -->
+                    <div class="config-panel hidden" id="configSpecific">
+                        <label for="specificPages" data-i18n="config.specificPages">Páginas a extraer:</label>
+                        <textarea id="specificPages" rows="3" placeholder="Ej: 1, 3, 5-10, 15" data-i18n-placeholder="config.specificPagesPlaceholder"></textarea>
+                        <p class="help-text" data-i18n="config.specificPagesHelp">Formato: números separados por comas. Usa guión para rangos (ej: 5-10)</p>
+                    </div>
+
+                    <!-- Config for Mode 3: Ranges -->
+                    <div class="config-panel hidden" id="configRanges">
+                        <label for="rangesList" data-i18n="config.rangesList">Rangos a dividir:</label>
+                        <textarea id="rangesList" rows="3" placeholder="Ej: 1-5; 10-15; 20-25" data-i18n-placeholder="config.rangesListPlaceholder"></textarea>
+                        <p class="help-text" data-i18n="config.rangesListHelp">Formato: rangos separados por punto y coma (ej: 1-5; 10-15)</p>
+                    </div>
+
+                    <!-- Error Message -->
+                    <div class="error-message hidden" id="errorMessage"></div>
+                </section>
+
+                <!-- Preview Section -->
+                <section class="preview-section hidden" id="previewSection">
+                    <h2 data-i18n="preview.title">Vista previa</h2>
+                    <div class="preview-content" id="previewContent">
+                        <!-- Will be populated dynamically -->
+                    </div>
+                </section>
+
+                <!-- Action Buttons -->
+                <section class="actions-section hidden" id="actionsSection">
+                    <button class="btn-primary" id="splitBtn" disabled data-i18n="buttons.split">Dividir PDF</button>
+                    <button class="btn-secondary" id="clearBtn" data-i18n="buttons.clear">Limpiar</button>
+                </section>
+
+                <!-- Progress Bar -->
+                <section class="progress-section hidden" id="progressSection">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                    <p class="progress-text" id="progressText" data-i18n="progress.processing">Procesando...</p>
+                </section>
+
+                <!-- Results Section -->
+                <section class="results-section hidden" id="resultsSection">
+                    <h2 data-i18n="results.title">Resultados</h2>
+                    <div class="results-content" id="resultsContent">
+                        <!-- Will be populated dynamically -->
+                    </div>
+                </section>
+
+                <!-- Footer -->
+                <footer class="footer">
+                    <p data-i18n="footer.privacy">Herramienta 100% web. Tus PDFs no se envían a ningún servidor.</p>
+                </footer>
+            </div>
+        </main>
+
+        <!-- Right Sidebar Ad (Desktop only) -->
+        <aside class="ad-sidebar ad-sidebar-right">
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+                 data-ad-slot="1357924680"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+        </aside>
+    </div>
+
+    <!-- Scripts -->
+    <!-- External Libraries -->
+    <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+
+    <!-- Core Modules (load in order) -->
+    <script src="js/i18n.js"></script>
+    <script src="js/theme.js"></script>
+    <script src="js/cookie-consent.js"></script>
+    <script src="js/analytics.js"></script>
+    <script src="js/ads.js"></script>
+
+    <!-- Application Logic -->
+    <script src="js/validators.js"></script>
+    <script src="js/pdf-handler.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

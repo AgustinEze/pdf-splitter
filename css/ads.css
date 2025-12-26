@@ -1,0 +1,230 @@
+/* Google AdSense Layout Styles */
+
+/* Main layout with ads */
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Banner ad at top */
+.ad-banner-top {
+  max-width: 100%;
+  margin: 0 auto 20px;
+  text-align: center;
+  padding: 10px;
+  background-color: var(--card-bg);
+  border-radius: var(--border-radius);
+  min-height: 90px; /* Reserve space to prevent layout shift */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Layout with sidebars for desktop */
+.layout-with-ads {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  max-width: 100%;
+  margin: 0 auto;
+  flex: 1;
+}
+
+.main-content {
+  width: 100%;
+  min-width: 0; /* Prevent grid blowout */
+}
+
+.ad-sidebar {
+  display: none; /* Hidden by default on mobile */
+}
+
+/* Desktop layout: Show sidebars */
+@media (min-width: 800px) {
+  .layout-with-ads {
+    grid-template-columns: 160px 1fr 160px;
+    max-width: 1400px;
+    gap: 15px;
+  }
+
+  .ad-sidebar {
+    display: block;
+    position: sticky;
+    top: 20px;
+    height: fit-content;
+    min-height: 600px; /* Reserve space to prevent layout shift */
+  }
+
+  .ad-sidebar-left {
+    grid-column: 1;
+  }
+
+  .main-content {
+    grid-column: 2;
+  }
+
+  .ad-sidebar-right {
+    grid-column: 3;
+  }
+
+  .ad-banner-top {
+    max-width: 728px; /* Standard leaderboard size */
+  }
+}
+
+/* Medium screens: slightly larger content area */
+@media (min-width: 1200px) {
+  .layout-with-ads {
+    gap: 20px;
+  }
+}
+
+/* Larger desktop: Use wider ads */
+@media (min-width: 1400px) {
+  .layout-with-ads {
+    grid-template-columns: 300px 1fr 300px;
+    max-width: 1600px;
+  }
+
+  .ad-sidebar {
+    min-height: 600px;
+  }
+
+  .ad-banner-top {
+    max-width: 970px; /* Large leaderboard */
+  }
+}
+
+/* Tablet: Hide sidebars, show only banner */
+@media (min-width: 768px) and (max-width: 799px) {
+  .ad-sidebar {
+    display: none;
+  }
+
+  .ad-banner-top {
+    max-width: 728px;
+  }
+}
+
+/* Mobile: Smaller banner */
+@media (max-width: 767px) {
+  .ad-banner-top {
+    min-height: 50px;
+    max-width: 320px;
+    margin: 0 auto 15px;
+  }
+}
+
+/* Ad container styles */
+.ad-sidebar,
+.ad-banner-top {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  padding: 10px;
+}
+
+/* Ad blocker message */
+.ad-blocker-message {
+  text-align: center;
+  padding: 20px;
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  line-height: 1.6;
+}
+
+.ad-blocker-message p {
+  margin-bottom: 10px;
+}
+
+.ad-blocker-message p:last-child {
+  margin-bottom: 0;
+}
+
+/* AdSense responsive ad units */
+.adsbygoogle {
+  display: block;
+  min-height: 50px; /* Reserve space while loading */
+}
+
+/* Loading skeleton for ads */
+.ad-loading {
+  background: linear-gradient(
+    90deg,
+    var(--bg-color) 25%,
+    var(--border-color) 50%,
+    var(--bg-color) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+  border-radius: var(--border-radius);
+  height: 100%;
+  min-height: 90px;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+
+
+/* Sticky ad behavior */
+.ad-sidebar.sticky {
+  position: sticky;
+  top: 20px;
+}
+
+/* Ensure ads don't break layout */
+.ad-sidebar ins,
+.ad-banner-top ins {
+  display: block;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+/* Dark theme adjustments */
+[data-theme="dark"] .ad-blocker-message {
+  color: var(--text-secondary);
+}
+
+/* Prevent layout shift */
+.ad-sidebar::before,
+.ad-banner-top::before {
+  content: '';
+  display: block;
+  padding-top: 100%; /* Aspect ratio placeholder */
+}
+
+.ad-sidebar::before {
+  padding-top: 375%; /* 600/160 = 3.75 ratio for vertical ads */
+}
+
+.ad-banner-top::before {
+  padding-top: 12.3%; /* 90/728 = 0.123 ratio for horizontal banner */
+}
+
+@media (max-width: 767px) {
+  .ad-banner-top::before {
+    padding-top: 15.6%; /* 50/320 = 0.156 ratio for mobile banner */
+  }
+}
+
+/* Remove placeholder when ad loads */
+.ad-sidebar .adsbygoogle::before,
+.ad-banner-top .adsbygoogle::before {
+  display: none;
+}
+
+/* Ensure main content container works properly with ads */
+@media (min-width: 800px) {
+  .main-content .container {
+    width: 520px;
+    max-width: 100%;
+  }
+}

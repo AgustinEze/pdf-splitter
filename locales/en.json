@@ -1,0 +1,101 @@
+{
+  "header": {
+    "title": "Split PDF",
+    "subtitle": "Web tool to split PDF files in different ways"
+  },
+  "upload": {
+    "dragDrop": "Drag your PDF here or click to select",
+    "selectFile": "Select file"
+  },
+  "pdfInfo": {
+    "title": "PDF Information",
+    "fileName": "File:",
+    "pageCount": "Pages:",
+    "fileSize": "Size:"
+  },
+  "modes": {
+    "title": "Select split mode",
+    "everyN": {
+      "title": "Split every N pages",
+      "description": "Divide the PDF into files of N pages each"
+    },
+    "specific": {
+      "title": "Extract specific pages",
+      "description": "Extract individual pages or specific ranges"
+    },
+    "ranges": {
+      "title": "Split by ranges",
+      "description": "Create multiple files with custom ranges"
+    }
+  },
+  "config": {
+    "title": "Configuration",
+    "pagesPerFile": "Pages per file:",
+    "pagesPerFileHelp": "Each file will have this number of pages (except the last one if there are remaining pages)",
+    "pagesPerFilePlaceholder": "e.g., 5",
+    "specificPages": "Pages to extract:",
+    "specificPagesHelp": "Format: comma-separated numbers. Use dash for ranges (e.g., 5-10)",
+    "specificPagesPlaceholder": "e.g., 1, 3, 5-10, 15",
+    "rangesList": "Ranges to split:",
+    "rangesListHelp": "Format: semicolon-separated ranges (e.g., 1-5; 10-15)",
+    "rangesListPlaceholder": "e.g., 1-5; 10-15; 20-25"
+  },
+  "buttons": {
+    "split": "Split PDF",
+    "clear": "Clear"
+  },
+  "preview": {
+    "title": "Preview"
+  },
+  "progress": {
+    "processing": "Processing..."
+  },
+  "results": {
+    "title": "Results"
+  },
+  "footer": {
+    "privacy": "100% web tool. Your PDFs are not sent to any server."
+  },
+  "errors": {
+    "noFile": "No file selected",
+    "invalidFile": "The file is not a valid PDF",
+    "fileTooBig": "File is too large. Maximum 50 MB",
+    "invalidPageNumber": "Invalid page number: must be greater than 0",
+    "pageOutOfRange": "Page {page} is out of range (1-{max})",
+    "invalidRange": "Invalid range: {range}",
+    "invalidFormat": "Invalid format. Use comma-separated numbers and dash for ranges",
+    "duplicatePages": "Duplicate pages found and removed",
+    "emptyInput": "Please enter at least one page number",
+    "invalidRangeFormat": "Invalid range format. Use: 1-5; 6-10",
+    "pagesPerFileRequired": "Please enter the number of pages per file",
+    "pagesPerFileInvalid": "Number of pages must be greater than 0",
+    "pagesPerFileTooLarge": "Pages per file cannot be greater than total pages ({total})",
+    "processingError": "Error processing PDF. Please try again.",
+    "rangeOverlap": "Ranges cannot overlap",
+    "rangeEmpty": "All ranges must contain at least one page"
+  },
+  "messages": {
+    "fileLoaded": "PDF loaded successfully: {name}",
+    "splitSuccess": "PDF split successfully. {count} files created.",
+    "fileDownloaded": "File downloaded: {name}",
+    "allFilesDownloaded": "All files have been downloaded"
+  },
+  "cookieBanner": {
+    "title": "Cookie Settings",
+    "message": "We use cookies to improve your experience and analyze site usage. You can accept all cookies or customize your preferences.",
+    "acceptAll": "Accept all",
+    "rejectAll": "Only necessary",
+    "customize": "Customize",
+    "necessary": "Necessary cookies",
+    "necessaryDesc": "Essential for site functionality (theme, language)",
+    "analytics": "Analytics cookies",
+    "analyticsDesc": "Help us understand how you use the site",
+    "advertising": "Advertising cookies",
+    "advertisingDesc": "Allow us to show relevant ads",
+    "savePreferences": "Save preferences"
+  },
+  "ui": {
+    "languageSelector": "Language",
+    "themeToggle": "Toggle theme"
+  }
+}

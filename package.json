@@ -1,0 +1,29 @@
+{
+  "name": "pdf-splitter",
+  "version": "1.0.0",
+  "description": "Free online PDF splitter tool - Split PDFs by pages, ranges, or extract specific pages",
+  "main": "index.html",
+  "scripts": {
+    "dev": "npx http-server -p 8000 -o",
+    "preview": "npx http-server -p 8000",
+    "build": "echo 'No build step needed - static site'",
+    "vercel-build": "echo 'Static site ready for deployment'"
+  },
+  "keywords": [
+    "pdf",
+    "splitter",
+    "pdf-tools",
+    "pdf-split",
+    "free-tool"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/YOUR_USERNAME/pdf-splitter.git"
+  },
+  "homepage": "https://github.com/YOUR_USERNAME/pdf-splitter#readme",
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  }
+}
