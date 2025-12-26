@@ -9,8 +9,8 @@ yarn.lock
 .env.local
 .env.production
 
-# Configuration (contains sensitive IDs)
-js/config.js
+# Configuration (public IDs - safe to commit)
+# js/config.js  # Commented: AdSense/Analytics IDs are not secrets
 
 # Vercel
 .vercel
@@ -41,3 +41,6 @@ coverage/
 *.tmp
 *.temp
 .cache/
+
+#md
+todo.md
